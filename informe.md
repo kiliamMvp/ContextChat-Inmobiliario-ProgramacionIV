@@ -929,3 +929,9 @@ Finalmente, el proyecto cuenta con **30 pruebas automatizadas, todas aprobadas**
 * OpenCode — Sitio oficial: https://opencode.ai/
 * Python — Documentación oficial: https://docs.python.org/
 * Repositorio base utilizado: https://github.com/ARAVINDs2002/ContextChat-Context-Aware-Chatbot-for-Detail-Pages-Django-Ollama-
+
+## Repositorio final en GitHub
+
+El código fuente y la documentación del proyecto se encuentran disponibles en el siguiente repositorio:
+
+https://github.com/kiliamMvp/ContextChat-Inmobiliario-ProgramacionIV
