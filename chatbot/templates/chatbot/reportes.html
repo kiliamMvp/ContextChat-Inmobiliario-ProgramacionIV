@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reportes de propiedades</title>
+</head>
+<body>
+    <p><a href="{% url 'index' %}">Volver al catálogo</a></p>
+    <h1>Reportes de propiedades</h1>
+
+    {% for r in resultados %}
+    <h2>{{ forloop.counter }}. {{ r.nombre }}</h2>
+    <p><em>{{ r.descripcion }}</em></p>
+    <p><strong>Resultado:</strong> {{ r.resultado }}</p>
+    <hr>
+    {% endfor %}
+</body>
+</html>

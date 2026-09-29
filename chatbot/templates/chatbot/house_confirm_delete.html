@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar {{ house.codigo }}</title>
+</head>
+<body>
+    <h1>Eliminar propiedad</h1>
+    <p>¿Está seguro de eliminar <strong>{{ house.codigo }} - {{ house.name }}</strong>?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sí, eliminar</button>
+        <a href="{% url 'house_detail' house.id %}">Cancelar</a>
+    </form>
+</body>
+</html>

@@ -1,38 +1,219 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
-    <title>Real Estate Chatbot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContextChat - Catálogo de Propiedades Inteligente</title>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#1e1b4b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .hero-pattern {
+            background-color: #0f172a;
+            background-image: radial-gradient(rgba(99, 102, 241, 0.18) 1px, transparent 1px), radial-gradient(rgba(14, 165, 233, 0.12) 1px, #0f172a 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+        }
+    </style>
 </head>
 
-<body class="bg-gray-100 h-screen flex flex-col items-center justify-center p-4">
-    <div class="max-w-4xl w-full">
-        <h1 class="text-3xl font-bold text-gray-800 mb-8 text-center">Available Properties</h1>
+<body class="bg-slate-50 min-h-screen flex flex-col antialiased text-slate-800">
+
+    <!-- Barra de Navegación -->
+    <header class="bg-slate-900/95 backdrop-blur border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold text-white tracking-tight">Context<span class="text-indigo-400">Chat</span></span>
+                    <span class="hidden sm:inline-block text-xs font-semibold px-2 py-0.5 ml-2 bg-indigo-500/20 text-indigo-300 rounded-full border border-indigo-500/30">Inmobiliaria IA</span>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold px-3 py-1.5 rounded-full">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>IA Lista &bull; Ollama Activo</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-pattern py-16 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+        <div class="max-w-3xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-400/30 text-indigo-300 text-xs sm:text-sm font-medium mb-6">
+                <span>✨ Asistente IA Inmobiliario 2.0</span>
+                <span class="text-slate-400">&bull;</span>
+                <span class="text-indigo-200">Totalmente en Español</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
+                Descubre Propiedades Exclusivas y <span class="bg-gradient-to-r from-indigo-400 via-sky-300 to-violet-400 bg-clip-text text-transparent">Conversa con la IA</span>
+            </h1>
+            <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8 font-light">
+                Selecciona cualquier propiedad para explorar sus servicios cercanos, consultar precios, ubicación o descripción. Nuestra IA solo responde sobre propiedades y sus datos.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-3 text-xs sm:text-sm text-slate-300">
+                <span class="flex items-center gap-1.5 bg-slate-800/80 border border-slate-700 px-3.5 py-1.5 rounded-full">
+                    <svg class="w-4 h-4 text-indigo-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                    Datos verificados de la propiedad
+                </span>
+                <span class="flex items-center gap-1.5 bg-slate-800/80 border border-slate-700 px-3.5 py-1.5 rounded-full">
+                    <svg class="w-4 h-4 text-indigo-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                    Hospitales, metros y colegios cercanos
+                </span>
+                <span class="flex items-center gap-1.5 bg-slate-800/80 border border-slate-700 px-3.5 py-1.5 rounded-full">
+                    <svg class="w-4 h-4 text-indigo-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                    Solo responde sobre propiedades
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo de Propiedades -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+            <div>
+                <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Propiedades Disponibles</h2>
+                <p class="text-slate-500 text-sm mt-0.5">Elige un inmueble para abrir su asistente de conversación en tiempo real.</p>
+            </div>
+            <div class="text-xs font-semibold text-slate-500 bg-white border border-slate-200 px-3.5 py-2 rounded-xl shadow-sm">
+                Total de propiedades: <span class="text-indigo-600 font-bold">{{ houses|length }}</span>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap gap-3 mb-8 text-sm font-semibold">
+            <a href="{% url 'house_create' %}" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl">+ Nueva propiedad</a>
+            <a href="{% url 'reportes' %}" class="bg-white border border-slate-300 hover:border-indigo-400 text-slate-700 px-4 py-2 rounded-xl">Ver reportes</a>
+            {% if messages %}
+            <ul class="w-full">
+                {% for message in messages %}
+                <li class="bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-2 rounded-xl">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
 
         {% if houses %}
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {% for house in houses %}
-            <a href="{% url 'chat' house.id %}"
-                class="block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow p-6 border border-gray-200 group">
-                <h2 class="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors mb-2">{{
-                    house.name }}</h2>
-                <p class="text-gray-600 text-sm mb-4">{{ house.location }}</p>
-                <div class="flex justify-between items-center">
-                    <span class="text-lg font-bold text-green-600">{{ house.price }}</span>
-                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Chat Now &rarr;</span>
+            <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden group">
+                <!-- Portada visual de la propiedad -->
+                <div class="h-44 bg-gradient-to-tr from-slate-800 via-indigo-950 to-slate-900 p-5 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#818cf8_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                    
+                    <div class="flex justify-between items-start relative z-10">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-emerald-500/90 text-white backdrop-blur shadow-sm">
+                            <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                            En Venta
+                        </span>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/20 text-white backdrop-blur border border-white/30">
+                            {{ house.precio_formateado }}
+                        </span>
+                    </div>
+
+                    <div class="relative z-10">
+                        <div class="inline-flex p-2 rounded-xl bg-white/10 backdrop-blur border border-white/10 text-indigo-200 mb-2">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
-            </a>
+
+                <!-- Contenido de la tarjeta -->
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                            <a href="{% url 'house_detail' house.id %}">{{ house.name }}</a>
+                        </h3>
+                        
+                        <p class="text-slate-500 text-sm flex items-center gap-1.5 mt-2">
+                            <svg class="w-4 h-4 text-rose-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span class="truncate">{{ house.location }}</span>
+                        </p>
+
+                        <p class="text-slate-600 text-sm mt-3.5 line-clamp-2 leading-relaxed">
+                            {{ house.description }}
+                        </p>
+                    </div>
+
+                    <!-- Botón de acción -->
+                    <div class="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between">
+                        <div class="flex flex-col">
+                            <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Precio</span>
+                            <span class="text-lg font-extrabold text-emerald-600">{{ house.precio_formateado }}</span>
+                        </div>
+
+                        <a href="{% url 'chat' house.id %}"
+                            class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-4 py-2.5 rounded-xl shadow-md shadow-indigo-600/20 group-hover:shadow-indigo-600/40 transition-all duration-200">
+                            <span>Chatear con IA</span>
+                            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
             {% endfor %}
         </div>
         {% else %}
-        <div class="text-center text-gray-500 bg-white p-8 rounded-lg shadow">
-            <p class="text-xl">No properties found.</p>
-            <p class="mt-2 text-sm">Run <code>python create_data.py</code> to populate test data.</p>
+        <div class="text-center bg-white border border-slate-200 p-12 rounded-3xl shadow-sm max-w-lg mx-auto">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-800 mb-2">No hay propiedades registradas</h3>
+            <p class="text-slate-500 text-sm mb-6">Ejecuta el script de datos de prueba para poblar el catálogo en español.</p>
+            <div class="bg-slate-900 text-indigo-300 font-mono text-xs px-4 py-3 rounded-xl inline-block shadow-inner">
+                python create_data.py
+            </div>
         </div>
         {% endif %}
-    </div>
-</body>
+    </main>
 
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <p>&copy; ContextChat Inmobiliario &bull; Asistente Contextual con Django y Ollama</p>
+            <p class="text-slate-400">Totalmente en español &bull; Respuestas basadas en datos</p>
+        </div>
+    </footer>
+
+</body>
 </html>

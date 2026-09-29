@@ -27,10 +27,12 @@ def get_house_context(house_id):
     # Immutable dictionary serving as the ONLY source of truth
     context = {
         "house": {
+            "codigo": house.codigo,
             "name": house.name,
             "location": house.location,
-            "price": house.price,
+            "price": house.precio_formateado(),
             "description": house.description,
+            "dormitorios": house.dormitorios,
         },
         "nearby_places": places_data,
         "exists": True

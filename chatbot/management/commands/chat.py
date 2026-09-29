@@ -4,33 +4,32 @@ from chatbot.logic import detect_intent, validate_data
 from chatbot.ai import generate_response
 
 class Command(BaseCommand):
-    help = 'Chat about a specific house'
+    help = 'Chatear sobre una propiedad específica o realizar cualquier consulta'
 
     def add_arguments(self, parser):
-        parser.add_argument('house_id', type=int, help='ID of the house')
-        parser.add_argument('question', type=str, help='The question to ask')
+        parser.add_argument('house_id', type=int, help='ID de la propiedad')
+        parser.add_argument('question', type=str, help='Pregunta a realizar')
 
     def handle(self, *args, **options):
         house_id = options['house_id']
         question = options['question']
 
-        # 1. Load context
+        # 1. Cargar contexto
         context = get_house_context(house_id)
         if not context:
-            self.stdout.write("House not found.")
+            self.stdout.write("Propiedad no encontrada.")
             return
 
-        # 2. Detect Intent
+        # 2. Detectar intención
         intent = detect_intent(question)
 
-        # 3. Validate Data (Manual Logic)
+        # 3. Validar datos
         is_valid, relevant_data, manual_response = validate_data(context, intent)
 
         if not is_valid:
-            # 4. Manual Fallback
             self.stdout.write(manual_response)
         else:
-            # 5. Call AI
-            # Pass only house info and relevant data slice
+            # 4. Llamar a la IA
             response = generate_response(context['house'], relevant_data, question)
             self.stdout.write(response)
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle - {{ house.name }}</title>
+</head>
+<body>
+    <p><a href="{% url 'index' %}">Volver al catálogo</a></p>
+    <h1>{{ house.name }}</h1>
+
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <ul>
+        <li><strong>Código:</strong> {{ house.codigo }}</li>
+        <li><strong>Ubicación:</strong> {{ house.location }}</li>
+        <li><strong>Precio:</strong> {{ house.precio_formateado }}</li>
+        <li><strong>Dormitorios:</strong> {{ house.dormitorios }}</li>
+        <li><strong>Descripción:</strong> {{ house.description }}</li>
+    </ul>
+
+    <p>
+        <a href="{% url 'house_update' house.id %}">Editar</a> |
+        <a href="{% url 'house_delete' house.id %}">Eliminar</a> |
+        <a href="{% url 'chat' house.id %}">Chatear con IA</a>
+    </p>
+</body>
+</html>

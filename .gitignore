@@ -8,3 +8,12 @@ venv/
 .venv/
 *.log
 .DS_Store
+.env
+temp_django/
+capturas/
+docs/
+image_assets/
+test_history_and_export.py
+verify.py
+ReadMe.md
+READMETRADUCIDO.md
